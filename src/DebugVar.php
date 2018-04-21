@@ -49,10 +49,6 @@ class DebugVar
      */
     public static function get()
     {
-        if (is_null(static::$debug)) {
-            static::register();
-        }
-
         return static::$debug;
     }
 
@@ -65,6 +61,7 @@ class DebugVar
         if (!$USER->IsAdmin()) {
             return false;
         }
+
         return isset($_COOKIE[$this->cookieName]) && $_COOKIE[$this->cookieName] === 'Y';
     }
 

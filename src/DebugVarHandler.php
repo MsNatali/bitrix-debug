@@ -10,7 +10,6 @@ class DebugVarHandler
 {
     /**
      * Отображение панели
-     * @throws \Exception
      */
     public static function showPanel()
     {
@@ -28,7 +27,6 @@ class DebugVarHandler
 
     /**
      * Установить куки, исходя из запроса
-     * @throws \Exception
      */
     public static function setCookie()
     {
@@ -43,16 +41,15 @@ class DebugVarHandler
             setcookie($key, 'Y', time() + 60 * 60 * 24, '/'); // включаем на сутки
             $_COOKIE[$key] = 'Y';
         } else {
-            setcookie($key, "", time() - 3600); // удаляем
+            setcookie($key, "", time() - 3600, '/'); // удаляем
             unset($_COOKIE[$key]);
         }
     }
 
     /**
      * Добавить кнопку работы с фронтендом
-     * @throws \Exception
      */
-    function addDebugVarButtonToTopPanel()
+    public static function addDebugVarButtonToTopPanel()
     {
         global $APPLICATION, $USER;
         if (!$USER->IsAdmin()) {

@@ -31,22 +31,25 @@ require_once($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/interface/admin_li
     }
 
     // Ставим суммарную инфу по высоте так, чтобы не накладывалось на останые
-    $(document).ready(function(){
+    document.addEventListener("DOMContentLoaded", function(){
         var maxTop = 0;
-        $('.bx-component-debug:visible[id!="bx-component-debug-var"]').each(function () {
-            var top = Number($(this).css('bottom').replace("px", ""));
-            if (maxTop < top) {
-                maxTop = top;
+        var elements = document.getElementsByClassName('bx-component-debug');
+        for (var i = 0; i < elements.length; i++)
+        {
+            if (elements[i].style.display!="none" && elements[i].getAttribute('id') != 'bx-component-debug-var') {
+                var top = Number(elements[i].style.bottom.replace("px", ""));
+                if (maxTop < top) {
+                    maxTop = top;
+                }
             }
-        });
+        }
 
         if (!maxTop) {
             maxTop = 10;
         } else {
             maxTop += 60;
         }
-        $('#bx-component-debug-var').css('bottom', maxTop + 'px');
-
+        document.getElementById('bx-component-debug-var').style.bottom = maxTop + 'px';
     });
     BX_DEBUG_VAR_INFO = new BX.CDebugDialog();
 </script>
