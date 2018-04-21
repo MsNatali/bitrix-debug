@@ -29,12 +29,11 @@ class DebugVar
      * Получить объект отладки
      * @param string $cut_dir часть пути до файла, которую не нужно выводить в попап
      * @param string $cookie_name название куки, куда будет сохраняться информация о текущем режиме отладки (вкл/выкл)
-     * @throws \Exception
      */
     public static function register($cut_dir = '', $cookie_name = '')
     {
         if (!is_null(static::$debug)) {
-            throw new \Exception("Debug Var уже был инициирован!");
+            return;
         }
 
         $em = \Bitrix\Main\EventManager::getInstance();
@@ -47,12 +46,11 @@ class DebugVar
 
     /**
      * Получить объект отладчика
-     * @throws \Exception
      */
     public static function get()
     {
         if (is_null(static::$debug)) {
-            throw new \Exception("Пропишите в init.php DebugVar::register()");
+            static::register();
         }
 
         return static::$debug;
@@ -75,7 +73,6 @@ class DebugVar
      * @param mixed $var переменная, информацию о которой необходимо вывести в отладчик
      * @param string $name название переменной. По умолчанию будет использовано реальное название переменной или No Name
      * @param int $backtrace_i порядковый номер элемента стека вызова, который будет использоваться для получения информации о файле и строке вызова
-     * @throws \Exception
      */
     public function debug($var, $name = '', $backtrace_i = 0)
     {

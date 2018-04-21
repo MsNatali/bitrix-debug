@@ -23,7 +23,7 @@ class DebugVarHandler
             return;
         }
 
-        require_once(__FILE__ . '/include/debug_var_info.php');
+        require_once(__DIR__ . '/include/debug_var_info.php');
     }
 
     /**
