@@ -1,0 +1,23 @@
+{
+  "name": "MsNatali/bitrix-debug",
+  "license": "MIT",
+  "keywords": [
+    "bitrix",
+    "debug"
+  ],
+  "authors": [
+    {
+      "name": "Golubkova Natalia",
+      "email": "natalisparta@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/MsNatali/bitrix-debug",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MsNatali\\BitrixDebug\\": "src/"
+    }
+  }
+}
