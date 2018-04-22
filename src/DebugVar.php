@@ -80,8 +80,8 @@ class DebugVar
         $debug = debug_backtrace();
         $trace = str_replace($this->cut_dir, '', $debug[$backtrace_i]['file']) . ':' . $debug[$backtrace_i]['line'];
         if (!$name) {
-            $vLine = file($debug[0]['file']);
-            $fLine = $vLine[$debug[0]['line'] - 1];
+            $vLine = file($debug[$backtrace_i]['file']);
+            $fLine = $vLine[$debug[$backtrace_i]['line'] - 1];
             preg_match("#\\$(\w+)#", $fLine, $match);
             $name = "Переменная: " . ($match[0] ?: 'No Name');
         }
